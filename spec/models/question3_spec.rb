@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Question3, :type => :model do
   describe 'create' do
-    let(:questionnaire) {Questionnaire.create}
+    let(:questionnaire) {Questionnaire::Nine.create}
     it 'creates 40 answers' do
       expect(questionnaire.question3.answers.count).to eq(40)
     end
