@@ -1,0 +1,31 @@
+h1 Список анкет
+
+table.ui.table
+  thead
+    tr
+      th Ф.И.О.
+      th Учреждение
+      th Phone
+      th Email
+      th colspan="3" Функции
+
+
+  tbody
+    - @questionnaires.each do |questionnaire|
+      tr
+        td
+         = questionnaire.last_name + ' ' +questionnaire.first_name + ' ' + questionnaire.patronymic
+        td
+          = questionnaire.classroom + ' класс, ' + questionnaire.school + ' школа, ' + questionnaire.school_district
+        td = questionnaire.phone
+        td = questionnaire.email
+        td
+          = link_to questionnaire, class: 'icon_link'
+            i.browser.icon
+        td
+          = link_to edit_questionnaire_path(questionnaire), class: 'icon_link'
+            i.edit.icon
+        td
+          = link_to questionnaire, data: {:confirm => 'Are you sure?'}, :method => :delete, class: 'icon_link'
+            i.remove.icon
+

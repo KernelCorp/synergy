@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/doabit/semantic-ui-sass.git
+  revision: ba3acee5bb44f2532436f83e3d7d0cd3152b5fe9
+  branch: v1.0beta
+  specs:
+    semantic-ui-sass (1.8.1.0)
+      sass (~> 3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -115,6 +123,8 @@ GEM
     email_spec (1.6.0)
       launchy (~> 2.1)
       mail (~> 2.2)
+    enumerize (0.10.0)
+      activesupport (>= 3.2)
     erubis (2.7.0)
     execjs (2.3.0)
     factory_girl (4.5.0)
@@ -281,8 +291,6 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
-    semantic-ui-sass (0.19.3.1)
-      sass (~> 3.2)
     sidekiq (3.3.0)
       celluloid (>= 0.16.0)
       connection_pool (>= 2.0.0)
@@ -363,6 +371,7 @@ DEPENDENCIES
   delorean
   devise
   email_spec
+  enumerize
   factory_girl_rails
   font-awesome-rails
   jbuilder (~> 2.0)
@@ -382,7 +391,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   selenium-webdriver
-  semantic-ui-sass
+  semantic-ui-sass!
   simplecov
   slim-rails
   spring
