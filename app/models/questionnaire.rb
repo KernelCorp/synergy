@@ -2,6 +2,7 @@ class Questionnaire
   include Mongoid::Document
 
   field :first_name
+  field :fqqwqd
   field :last_name
   field :patronymic
   field :school
