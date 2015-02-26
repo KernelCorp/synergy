@@ -1,7 +1,7 @@
 class Question3
   include Mongoid::Document
 
-  embedded_in :questionnaire
+  embedded_in :questionnaire, class_name: 'Questionnaire::Nine'
   embeds_many :answers
   accepts_nested_attributes_for :answers
 
