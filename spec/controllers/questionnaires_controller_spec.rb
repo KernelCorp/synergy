@@ -33,10 +33,10 @@ RSpec.describe QuestionnairesController, :type => :controller do
   let(:valid_session) { {} }
 
   describe "GET index" do
-    it "assigns all questionnaires as @questionnaires" do
+    it "assigns all questionnaire_nines as @questionnaire_nines" do
       questionnaire = Questionnaire.create! valid_attributes
       get :index
-      expect(assigns(:questionnaires)).to eq([questionnaire])
+      expect(assigns(:questionnaire_nines)).to eq([questionnaire])
     end
   end
 
@@ -127,7 +127,7 @@ RSpec.describe QuestionnairesController, :type => :controller do
       }.to change(Questionnaire, :count).by(-1)
     end
 
-    it "redirects to the questionnaires list" do
+    it "redirects to the questionnaire_nines list" do
       questionnaire = Questionnaire.create! valid_attributes
       delete :destroy, {:id => questionnaire.to_param}
       expect(response).to redirect_to(questionnaires_url)
