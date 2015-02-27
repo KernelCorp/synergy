@@ -36,7 +36,7 @@ class QuestionnaireNinesController < ApplicationController
 
   def destroy
     @questionnaire.destroy
-    redirect_to questionnaires_path
+    redirect_to questionnaire_nines_path
   end
 
   private
