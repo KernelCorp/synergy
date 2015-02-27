@@ -1,0 +1,85 @@
+= form_for @questionnaire, :html => {class: 'ui form'} do |f|
+  - if @questionnaire.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@questionnaire.errors.count, 'error')} prohibited this questionnaire from being saved:"
+      ul
+        - @questionnaire.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    .label Данные опрашиваемого
+    .three.fields
+      .field
+        = f.text_field :first_name, placeholder: 'Имя'
+      .field
+        = f.text_field :last_name, placeholder: 'Фамилия'
+      .field
+        = f.text_field :patronymic, placeholder: 'Отчество'
+  .field
+    .label Данные о школе
+    .three.fields
+      .field
+        = f.text_field :school, placeholder: 'Школа'
+      .field
+        = f.text_field :classroom, placeholder: 'Класс'
+      .field
+        = f.text_field :school_district, placeholder: 'Округ школы'
+  .field
+    .label Контактные данные
+    .two.fields
+      .field
+        = f.text_field :phone, placeholder: 'Телефон'
+      .field
+        = f.text_field :email, placeholder: 'E-mail'
+
+
+
+  = f.fields_for :question_about_factor do |question_form|
+    table.ui.table
+      thead
+        tr
+          th Утверждение
+          th Важность утверждения
+      tbody
+        = question_form.fields_for :answers_by_factor_questions do |answer_form|
+          tr
+            td = answer_form.object.factor_choise_profession.factor
+            td = answer_form.text_field :importance, placeholder: 'Значение от 1 до 10'
+            = answer_form.hidden_field :factor_choise_profession_id, value: answer_form.object.factor_choise_profession.id
+
+  = f.fields_for :question_about_color do |question_form|
+    h3 Приятные цвета
+    .three.fields
+      = question_form.fields_for :nice_color do |nice_color_form|
+        .field
+          = nice_color_form.select :color1, Questionnaire::Elevent::ANSWERS_BY_COLOR_QUESTION, {prompt: 'Приятный цвет'}
+        .field
+          = nice_color_form.select :color2, Questionnaire::Elevent::ANSWERS_BY_COLOR_QUESTION, {prompt: 'Приятный цвет'}
+        .field
+          = nice_color_form.select :color3, Questionnaire::Elevent::ANSWERS_BY_COLOR_QUESTION, {prompt: 'Приятный цвет'}
+    h3 Неприятные цвета
+    .three.fields
+      = question_form.fields_for :not_nice_color do |not_nice_color_form|
+        .field
+          = not_nice_color_form.select :color1, Questionnaire::Elevent::ANSWERS_BY_COLOR_QUESTION, {prompt: 'Неприятный цвет'}
+        .field
+          = not_nice_color_form.select :color2, Questionnaire::Elevent::ANSWERS_BY_COLOR_QUESTION, {prompt: 'Неприятный цвет'}
+        .field
+          = not_nice_color_form.select :color3, Questionnaire::Elevent::ANSWERS_BY_COLOR_QUESTION, {prompt: 'Неприятный цвет'}
+
+  = f.fields_for :question_about_preference do |question_form|
+    = question_form.fields_for :answers_by_preference_questions do |answer_form|
+      label = 'Вопрос №' + (answer_form.index+1).to_s
+      .field.inline
+        = answer_form.radio_button :answer, 'A', checked: true
+        label = answer_form.object.preference_profession.profession_a + ' (A)'
+      .field.inline
+        = answer_form.radio_button :answer, 'B'
+        label = answer_form.object.preference_profession.profession_b + ' (B)'
+      = answer_form.hidden_field :preference_profession_id, value: answer_form.object.preference_profession.id
+
+
+
+
+
+  = f.submit class: 'ui submit button', value: submit_text

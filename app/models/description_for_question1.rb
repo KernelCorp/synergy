@@ -4,4 +4,5 @@ class DescriptionForQuestion1
   field :title
   field :description
 
+  validates_uniqueness_of :title
 end

@@ -1,0 +1,57 @@
+p#notice = notice
+
+p
+  strong Ф.И.О. опрашиваемого:&nbsp;
+  = @questionnaire.first_name + ' ' + @questionnaire.last_name + ' ' + @questionnaire.patronymic
+p
+  strong Школа:&nbsp;
+  = @questionnaire.school + ', ' + @questionnaire.school_district
+p
+  strong Класс:&nbsp;
+  = @questionnaire.classroom
+p
+  strong Телефон:&nbsp;
+  = @questionnaire.phone
+p
+  strong E-mail:&nbsp;
+  = @questionnaire.email
+
+h2 Результаты тестирования:
+p
+  h4 Вопрос №1. Факторы выбора профессии
+  - @questionnaire.question_about_factor.answers_by_factor_questions.desc(:importance).each do |factor|
+    = factor.importance.to_s + ' ' + factor.factor_choise_profession.factor
+    br
+p
+  h4 Вопрос №2. Приятные и неприятные цвета
+  h3 Приятные цвета
+  .three.fields
+    .field
+      = @questionnaire.question_about_color.nice_color.color1
+    .field
+      = @questionnaire.question_about_color.nice_color.color2
+    .field
+      = @questionnaire.question_about_color.nice_color.color3
+  h3 Неприятные цвета
+  .three.fields
+    .field
+      = @questionnaire.question_about_color.not_nice_color.color1
+    .field
+      = @questionnaire.question_about_color.not_nice_color.color2
+    .field
+      = @questionnaire.question_about_color.not_nice_color.color3
+
+
+p
+  h4 Вопрос №3. Определение профессиональных предпочтений
+  = @questionnaire.question_about_preference.max_sum
+
+
+p
+  h4 Вопрос №4. Подтипы
+
+
+
+= link_to 'Edit', edit_questionnaire_elevent_path(@questionnaire)
+'|
+= link_to 'Back', questionnaire_elevents_path
