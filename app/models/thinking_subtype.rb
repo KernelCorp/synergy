@@ -1,7 +1,7 @@
 class ThinkingSubtype
   include Mongoid::Document
 
-  field :title
+  field :name
   field :status
   field :description
   field :suitable_job

@@ -11,7 +11,7 @@ RSpec.describe Question3, :type => :model do
   describe '#type_of_think' do
     before :each do
       create :thinking_type, kind: :pd, title: 'pd'
-      create :thinking_type, kind: :as, title: 'as'
+      create :thinking_type, kind: :as, name: 'as'
       create :thinking_type, kind: :sl, title: 'sl'
       create :thinking_type, kind: :no, title: 'no'
       create :thinking_type, kind: :k, title: 'k'

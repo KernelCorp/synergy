@@ -1,13 +1,13 @@
-= form_for @questionnaire, :html => {class: 'ui form'} do |f|
-  - if @questionnaire.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@questionnaire.errors.count, 'error')} prohibited this questionnaire from being saved:"
-      ul
-        - @questionnaire.errors.full_messages.each do |message|
-          li = message
-
-  .field
-    .label Данные опрашиваемого
+.ui.segment
+  = form_for @questionnaire, :html => {class: 'ui form'} do |f|
+    - if @questionnaire.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@questionnaire.errors.count, 'error')} prohibited this questionnaire from being saved:"
+        ul
+          - @questionnaire.errors.full_messages.each do |message|
+            li = message
+    .ui.dividing.header
+      | Данные опрашиваемого
     .three.fields
       .field
         = f.text_field :first_name, placeholder: 'Имя'
@@ -15,8 +15,9 @@
         = f.text_field :last_name, placeholder: 'Фамилия'
       .field
         = f.text_field :patronymic, placeholder: 'Отчество'
-  .field
-    .label Данные о школе
+
+    .ui.dividing.header
+      | Данные о школе
     .three.fields
       .field
         = f.text_field :school, placeholder: 'Школа'
@@ -24,8 +25,9 @@
         = f.text_field :classroom, placeholder: 'Класс'
       .field
         = f.text_field :school_district, placeholder: 'Округ школы'
-  .field
-    .label Контактные данные
+
+    .ui.dividing.header
+      | Контактные данные
     .two.fields
       .field
         = f.text_field :phone, placeholder: 'Телефон'
@@ -34,49 +36,52 @@
 
 
 
-  .field
-    .label Вопрос №1
-    = f.select :question1, Questionnaire::Nine::ANSWERS_BY_FIRST_QUESTION, {prompt: 'Тип профессий'}
-
-
-  .field
-    .label Вопрос №2
-    .field.inline
-      = f.radio_button :question2,  'Осознанно', checked: true
-      label Осознанно
-    .field.inline
-      = f.radio_button :question2, 'Неосознанно'
-      label Неосознанно
-
-
-  = f.fields_for :question3 do |question3|
-    = question3.fields_for :answers do |answer|
-      .four.fields
-        .field.inline
-          label = 'Утверждение №' + (answer.index + 1).to_s
-        .field.inline
-          = answer.radio_button :answer, '3', checked: true
-          label 3
-        .field.inline
-          = answer.radio_button :answer, '2'
-          label 2
-        .field.inline
-          = answer.radio_button :answer, '1'
-          label 1
-
-  = f.fields_for :question4 do |question4|
+    .ui.dividing.header Вопросы
     .field
-      .label Вопрос №4 (Конструктивный рисунок человека)
-      .three.fields
-        .field
-          = question4.text_field :answer1, placeholder: 'Формула первого рисунка'
-        .field
-          = question4.text_field :answer2, placeholder: 'Формула второго рисунка'
-        .field
-          = question4.text_field :answer3, placeholder: 'Формула третьего рисунка'
+      label Вопрос №1
+      = f.select :profession_type, ProfessionType.all.collect {|type| [type.name, type.id]}, {prompt: 'Тип профессий'}
 
+    .ui.divider
 
+    .field
+      label Вопрос №2
+      .field.inline
+        = f.radio_button :question2,  'Осознанно', checked: true
+        label Осознанно
+      .field.inline
+        = f.radio_button :question2, 'Неосознанно'
+        label Неосознанно
 
+    .ui.divider
 
+    .field
+      label Вопрос №2
+    = f.fields_for :question3 do |question3|
+      = question3.fields_for :answers do |answer|
+        .four.fields
+          .field.inline
+            label = 'Утверждение №' + (answer.index + 1).to_s
+          .field.inline
+            = answer.radio_button :answer, '3', checked: true
+            label 3
+          .field.inline
+            = answer.radio_button :answer, '2'
+            label 2
+          .field.inline
+            = answer.radio_button :answer, '1'
+            label 1
 
-  = f.submit class: 'ui submit button', value: submit_text
+    .ui.divider
+
+    = f.fields_for :question4 do |question4|
+      .field
+        label Вопрос №4 (Конструктивный рисунок человека)
+        .three.fields
+          .field
+            = question4.text_field :answer1, placeholder: 'Формула первого рисунка'
+          .field
+            = question4.text_field :answer2, placeholder: 'Формула второго рисунка'
+          .field
+            = question4.text_field :answer3, placeholder: 'Формула третьего рисунка'
+
+    = f.submit class: 'ui submit button', value: submit_text
