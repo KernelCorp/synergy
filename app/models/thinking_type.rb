@@ -2,7 +2,7 @@ class ThinkingType
   extend Enumerize
   include Mongoid::Document
 
-  field :title
+  field :name
   field :kind
   field :description
 

@@ -19,7 +19,7 @@ p
 h2 Результаты тестирования:
 p
   h4 Вопрос №1. Типы профессий (сферы):
-  = @questionnaire.question1 + ' - ' + DescriptionForQuestion1.find_by(title: @questionnaire.question1).description
+  = "#{@questionnaire.profession_type.name} - #{@questionnaire.profession_type.description}"
 p
   h4 Вопрос №2. Осознанность выбора профессии
   = 'Выбор профессии совершается ' + @questionnaire.question2
@@ -27,46 +27,46 @@ p
   h4 Вопрос №3. Тип мышления
   - @questionnaire.question3.type_of_thinking.each do |current_type|
     p
-      b = current_type.title
+      b = current_type.name
       = ' ' + current_type.description
 
-p
-  h4 Вопрос №4. Подтипы
-  - leading_subtype = @questionnaire.question4.subtype(@questionnaire.question4.answer1)
-  - actual_subtype = @questionnaire.question4.subtype(@questionnaire.question4.answer2)
-  - potential_subtype = @questionnaire.question4.subtype(@questionnaire.question4.answer3)
-
-  .field
-    b Ведущий подтип -&nbsp;
-    = leading_subtype.title
-    p
-      = leading_subtype.status
-    p
-      = leading_subtype.description
-    p
-      b Наиболее подходящие деятельности:&nbsp;
-      = leading_subtype.suitable_job
-  .field
-    b Актуальный подтип -&nbsp;
-    = actual_subtype.title
-    p
-      = actual_subtype.status
-    p
-      = actual_subtype.description
-    p
-      b Наиболее подходящие деятельности:&nbsp;
-      = actual_subtype.suitable_job
-  .field
-    b Потенциальный подтип -&nbsp;
-    = potential_subtype.title
-    p
-      = potential_subtype.status
-    p
-      = potential_subtype.description
-    p
-      b Наиболее подходящие деятельности:&nbsp;
-      = potential_subtype.suitable_job
-
+/p
+/  h4 Вопрос №4. Подтипы
+/  - leading_subtype = @questionnaire.question4.subtype(@questionnaire.question4.answer1)
+/  - actual_subtype = @questionnaire.question4.subtype(@questionnaire.question4.answer2)
+/  - potential_subtype = @questionnaire.question4.subtype(@questionnaire.question4.answer3)
+/
+/  .field
+/    b Ведущий подтип -&nbsp;
+/    = leading_subtype.title
+/    p
+/      = leading_subtype.status
+/    p
+/      = leading_subtype.description
+/    p
+/      b Наиболее подходящие деятельности:&nbsp;
+/      = leading_subtype.suitable_job
+/  .field
+/    b Актуальный подтип -&nbsp;
+/    = actual_subtype.title
+/    p
+/      = actual_subtype.status
+/    p
+/      = actual_subtype.description
+/    p
+/      b Наиболее подходящие деятельности:&nbsp;
+/      = actual_subtype.suitable_job
+/  .field
+/    b Потенциальный подтип -&nbsp;
+/    = potential_subtype.title
+/    p
+/      = potential_subtype.status
+/    p
+/      = potential_subtype.description
+/    p
+/      b Наиболее подходящие деятельности:&nbsp;
+/      = potential_subtype.suitable_job
+/
 
 = link_to 'Edit', edit_questionnaire_nine_path(@questionnaire)
 '|

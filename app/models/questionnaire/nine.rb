@@ -1,11 +1,10 @@
 module Questionnaire
   class Nine < Base
-    ANSWERS_BY_FIRST_QUESTION = ['Человек-Природа', 'Человек-Техника', 'Человек-Знак', 'Человек-Человек',
-                                 'Человек-Художественный образ']
 
-    field :question1
+
     field :question2
 
+    belongs_to :profession_type
     embeds_one :question3
     embeds_one :question4
 

@@ -7,8 +7,15 @@ class Question4
 
   embedded_in :questionnaire, class_name: 'Questionnaire::Nine'
 
-  def subtype(answer)
-    result = SubtypeCode.find_by(image_code: answer).thinking_subtype
+  def leading_subtype
+    SubtypeCode.where(image_code: answer1).first
   end
 
+  def actual_subtype
+    SubtypeCode.where(image_code: answer2).first
+  end
+
+  def potential_subtype
+    SubtypeCode.where(image_code: answer3).first
+  end
 end

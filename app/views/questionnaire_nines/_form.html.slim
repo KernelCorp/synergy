@@ -39,7 +39,7 @@
     .ui.dividing.header Вопросы
     .field
       label Вопрос №1
-      = f.select :question1, Questionnaire::Nine::ANSWERS_BY_FIRST_QUESTION, {prompt: 'Тип профессий'}
+      = f.select :profession_type, ProfessionType.all.collect {|type| [type.name, type.id]}, {prompt: 'Тип профессий'}
 
     .ui.divider
 
@@ -83,9 +83,5 @@
             = question4.text_field :answer2, placeholder: 'Формула второго рисунка'
           .field
             = question4.text_field :answer3, placeholder: 'Формула третьего рисунка'
-
-
-
-
 
     = f.submit class: 'ui submit button', value: submit_text
