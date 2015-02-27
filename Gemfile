@@ -9,7 +9,8 @@ gem 'enumerize'
 # Mongoid and utils
 gem 'mongoid', '~> 4.0.0'
 
-
+gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf'
 # Admin tool
 gem 'rails_admin'
 gem 'ckeditor'

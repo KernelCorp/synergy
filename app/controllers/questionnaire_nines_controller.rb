@@ -7,6 +7,10 @@ class QuestionnaireNinesController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.pdf {render pdf: "questionnaire-#{ @questionnaire.id }"}
+    end
   end
 
   def new
