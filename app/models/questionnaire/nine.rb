@@ -1,5 +1,7 @@
 module Questionnaire
   class Nine < Base
+    ANSWERS_BY_FIRST_QUESTION = ['Человек-Природа', 'Человек-Техника', 'Человек-Знак', 'Человек-Человек',
+                                 'Человек-Художественный образ']
 
     field :question1
     field :question2
@@ -13,9 +15,6 @@ module Questionnaire
       build_question3 unless question3
       build_question4 unless question4
     end
-
-    ANSWERS_BY_FIRST_QUESTION = ['Человек-Природа', 'Человек-Техника', 'Человек-Знак', 'Человек-Человек',
-                                 'Человек-Художественный образ']
   end
 end
 
