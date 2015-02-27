@@ -7,5 +7,5 @@ class ThinkingSubtype
   field :suitable_job
 
   has_many :subtype_codes
-  validates_uniqueness_of :title
+  validates_uniqueness_of :name
 end

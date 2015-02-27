@@ -78,6 +78,22 @@
         label = answer_form.object.preference_profession.profession_b + ' (B)'
       = answer_form.hidden_field :preference_profession_id, value: answer_form.object.preference_profession.id
 
+  = f.fields_for :question_about_picture do |question_form|
+    .three.fields
+      .field
+        = question_form.select :image1_id, PicturePattern.for_question(1).collect {|pattern| [pattern.title, pattern.id]}, {prompt: 'Рисунок 1'}
+      .field
+        = question_form.select :image2_id, PicturePattern.for_question(2).collect {|pattern| [pattern.title, pattern.id]}, {prompt: 'Рисунок 2'}
+      .field
+        = question_form.select :image3_id, PicturePattern.for_question(3).collect {|pattern| [pattern.title, pattern.id]}, {prompt: 'Рисунок 3'}
+    .three.fields
+      .field
+        = question_form.select :image4_id, PicturePattern.for_question(4).collect {|pattern| [pattern.title, pattern.id]}, {prompt: 'Рисунок 4'}
+      .field
+        = question_form.select :image5_id, PicturePattern.for_question(5).collect {|pattern| [pattern.title, pattern.id]}, {prompt: 'Рисунок 5'}
+      .field
+        = question_form.select :image6_id, PicturePattern.for_question(6).collect {|pattern| [pattern.title, pattern.id]}, {prompt: 'Рисунок 6'}
+
 
 
 

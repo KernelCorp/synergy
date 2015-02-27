@@ -49,6 +49,7 @@ class QuestionnaireEleventsController < ApplicationController
                     :school_district,
                     question_about_factor_attributes: [answers_by_factor_questions_attributes:[:id, :importance, :factor_choise_profession_id]],
                     question_about_color_attributes: [nice_color_attributes: [:id,:color1,:color2,:color3], not_nice_color_attributes: [:id,:color1,:color2,:color3]],
-                    question_about_preference_attributes: [answers_by_preference_questions_attributes: [:id, :answer, :preference_profession_id]])
+                    question_about_preference_attributes: [answers_by_preference_questions_attributes: [:id, :answer, :preference_profession_id]],
+                    question_about_picture_attributes: [:id, :image1_id, :image2_id, :image3_id, :image4_id, :image5_id, :image6_id ])
   end
 end

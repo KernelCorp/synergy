@@ -12,11 +12,9 @@ class PreferenceResult
   def sum (current_question)
     sum = 0
     current_question.answers_by_preference_questions.each do |current_answer|
-      if criterium = self.preference_result_criteriums.find_by(preference_profession_id: current_answer.preference_profession_id)
-        if criterium.correct_answer == current_answer.answer
-          sum +=1
-        end
-      end
+      criteriums = preference_result_criteriums.where(preference_profession_id: current_answer.preference_profession_id,
+                                                     correct_answer: current_answer.answer)
+     sum += 1 if criteriums.count > 0
     end
     sum
   end
