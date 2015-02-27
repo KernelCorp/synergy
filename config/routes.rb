@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root 'questionnaire_nines#index'
   resources :questionnaire_nines
+  resources :questionnaire_elevents
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

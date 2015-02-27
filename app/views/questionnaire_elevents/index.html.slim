@@ -1,6 +1,6 @@
 h1 Список анкет
 
-table.ui.celled.table
+table.ui.table
   thead
     tr
       th Ф.И.О.
@@ -23,9 +23,8 @@ table.ui.celled.table
           = link_to questionnaire, class: 'icon_link'
             i.browser.icon
         td
-          = link_to edit_questionnaire_nine_path(questionnaire), class: 'icon_link'
+          = link_to edit_questionnaire_elevent_path(questionnaire), class: 'icon_link'
             i.edit.icon
         td
-          = link_to questionnaire_nine_path(questionnaire), data: {:confirm => 'Are you sure?'}, :method => :delete, class: 'icon_link'
+          = link_to questionnaire, data: {:confirm => 'Are you sure?'}, :method => :delete, class: 'icon_link'
             i.remove.icon
-

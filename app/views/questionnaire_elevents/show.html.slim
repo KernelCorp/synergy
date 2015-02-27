@@ -1,0 +1,88 @@
+p#notice = notice
+
+p
+  strong Ф.И.О. опрашиваемого:&nbsp;
+  = @questionnaire.first_name + ' ' + @questionnaire.last_name + ' ' + @questionnaire.patronymic
+p
+  strong Школа:&nbsp;
+  = @questionnaire.school + ', ' + @questionnaire.school_district
+p
+  strong Класс:&nbsp;
+  = @questionnaire.classroom
+p
+  strong Телефон:&nbsp;
+  = @questionnaire.phone
+p
+  strong E-mail:&nbsp;
+  = @questionnaire.email
+
+h2 Результаты тестирования:
+p
+  h4 Вопрос №1. Факторы выбора профессии
+  - @questionnaire.question_about_factor.answers_by_factor_questions.desc(:importance).each do |factor|
+    = factor.importance.to_s + ' ' + factor.factor_choise_profession.factor
+    br
+p
+  h4 Вопрос №2. Приятные и неприятные цвета
+  h3 Приятные цвета
+  .three.fields
+    .field
+      = @questionnaire.question_about_color.nice_color.color1
+    .field
+      = @questionnaire.question_about_color.nice_color.color2
+    .field
+      = @questionnaire.question_about_color.nice_color.color3
+  h3 Неприятные цвета
+  .three.fields
+    .field
+      = @questionnaire.question_about_color.not_nice_color.color1
+    .field
+      = @questionnaire.question_about_color.not_nice_color.color2
+    .field
+      = @questionnaire.question_about_color.not_nice_color.color3
+
+
+p
+  h4 Вопрос №3. Определение профессиональных предпочтений
+  = "Буквенный код: #{@questionnaire.question_about_preference.letter_code}"
+  br
+  - @questionnaire.question_about_preference.max_sum.each do |preference|
+    = preference[0]
+    br
+    = @questionnaire.question_about_preference.get_description(preference[0])
+    br
+
+
+p
+  h4 Вопрос №4. Заверши рисунок.
+  h3 1. Отношение к себе и представление о себе:
+  .field
+    .label = @questionnaire.question_about_picture.image1.title
+    p = @questionnaire.question_about_picture.image1.description
+  h3 2. Общительность:
+  .field
+    .label = @questionnaire.question_about_picture.image2.title
+    p = @questionnaire.question_about_picture.image2.description
+  h3 3. Дисциплинированность:
+  .field
+    .label = @questionnaire.question_about_picture.image3.title
+    p = @questionnaire.question_about_picture.image3.description
+  h3 4. Уверенность:
+  .field
+    .label = @questionnaire.question_about_picture.image4.title
+    p = @questionnaire.question_about_picture.image4.description
+  h3 5. Соперничество (конкурентоспособность):
+  .field
+    .label = @questionnaire.question_about_picture.image5.title
+    p = @questionnaire.question_about_picture.image5.description
+  h3 6. Целеустремленность:
+  .field
+    .label = @questionnaire.question_about_picture.image6.title
+    p = @questionnaire.question_about_picture.image6.description
+
+
+
+
+= link_to 'Edit', edit_questionnaire_elevent_path(@questionnaire)
+'|
+= link_to 'Back', questionnaire_elevents_path
