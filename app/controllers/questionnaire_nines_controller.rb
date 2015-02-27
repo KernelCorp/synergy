@@ -7,6 +7,10 @@ class QuestionnaireNinesController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.pdf {render pdf: "questionnaire-#{ @questionnaire.id }"}
+    end
   end
 
   def new
@@ -36,7 +40,7 @@ class QuestionnaireNinesController < ApplicationController
 
   def destroy
     @questionnaire.destroy
-    redirect_to questionnaires_path
+    redirect_to questionnaire_nines_path
   end
 
   private

@@ -1,6 +1,5 @@
+= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
 .ui.segment
-  p#notice = notice
-
   .ui.red.ribbon.label
     | Личные данные
   p
@@ -81,11 +80,3 @@
               = @questionnaire.question4.potential_subtype.suitable_job
           - else
             | Не определен
-
-
-  = link_to 'PDF', questionnaire_nine_path(@questionnaire, format: :pdf)
-  '|
-  = link_to 'Edit', edit_questionnaire_nine_path(@questionnaire)
-  '|
-  = link_to 'Back', questionnaire_nines_path
-
