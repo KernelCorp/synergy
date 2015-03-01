@@ -5,4 +5,6 @@ class ProfessionType
            'Человек-Художественный образ']
   field :name
   field :description
+
+  scope :all_types, -> {all}
 end

@@ -2,12 +2,11 @@ class QuestionAboutColor
   include Mongoid::Document
 
   embedded_in :questionnaire, class_name: 'Questionnaire::Elevent'
-  embeds_one :nice_color
-  embeds_one :not_nice_color
-  accepts_nested_attributes_for :nice_color, :not_nice_color
 
-  after_initialize do
-    build_nice_color if nice_color.nil?
-    build_not_nice_color if not_nice_color.nil?
-  end
+  belongs_to :nice_color1, class_name: 'ColorPattern'
+  belongs_to :nice_color2, class_name: 'ColorPattern'
+  belongs_to :nice_color3, class_name: 'ColorPattern'
+  belongs_to :not_nice_color1, class_name: 'ColorPattern'
+  belongs_to :not_nice_color2, class_name: 'ColorPattern'
+  belongs_to :not_nice_color3, class_name: 'ColorPattern'
 end

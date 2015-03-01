@@ -50,7 +50,7 @@ class QuestionnaireNinesController < ApplicationController
 
     def questionnaire_params
       params.require(:questionnaire_nine).permit(:first_name, :last_name, :patronymic, :school, :phone, :email, :classroom,
-                                            :school_district, :profession_type, :question2,
+                                            :school_district, :profession_type_id, :question2,
                                             question3_attributes: [answers_attributes: [:id, :answer]],
                                             question4_attributes: [:answer1, :answer2, :answer3])
     end

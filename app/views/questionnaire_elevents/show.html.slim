@@ -17,29 +17,46 @@ p
   = @questionnaire.email
 
 h2 Результаты тестирования:
-p
-  h4 Вопрос №1. Факторы выбора профессии
-  - @questionnaire.question_about_factor.answers_by_factor_questions.desc(:importance).each do |factor|
-    = factor.importance.to_s + ' ' + factor.factor_choise_profession.factor
-    br
-p
-  h4 Вопрос №2. Приятные и неприятные цвета
-  h3 Приятные цвета
-  .three.fields
-    .field
-      = @questionnaire.question_about_color.nice_color.color1
-    .field
-      = @questionnaire.question_about_color.nice_color.color2
-    .field
-      = @questionnaire.question_about_color.nice_color.color3
-  h3 Неприятные цвета
-  .three.fields
-    .field
-      = @questionnaire.question_about_color.not_nice_color.color1
-    .field
-      = @questionnaire.question_about_color.not_nice_color.color2
-    .field
-      = @questionnaire.question_about_color.not_nice_color.color3
+
+h4 Вопрос №1. Факторы выбора профессии
+table.ui.table
+  thead
+    tr
+      th Важность
+      th Фактор
+      th Мотивация
+      th Аргументы
+  tbody
+    - @questionnaire.question_about_factor.answers_by_factor_questions.desc(:importance).reverse.each do |factor|
+      tr
+        td = factor.importance
+        td = factor.factor_choise_profession.factor
+        td = factor.factor_choise_profession.motivation
+        td = factor.factor_choise_profession.arguments
+
+h4 Вопрос №2. Приятные и неприятные цвета
+h3 Приятные цвета
+.three.fields
+  .field
+    b = @questionnaire.question_about_color.nice_color1.color
+    = " - #{@questionnaire.question_about_color.nice_color1.nice}"
+  .field
+    b = @questionnaire.question_about_color.nice_color2.color
+    = " - #{@questionnaire.question_about_color.nice_color2.nice}"
+  .field
+    b = @questionnaire.question_about_color.nice_color3.color
+    = " - #{@questionnaire.question_about_color.nice_color3.nice}"
+h3 Неприятные цвета
+.three.fields
+  .field
+    b = @questionnaire.question_about_color.not_nice_color1.color
+    = " - #{@questionnaire.question_about_color.not_nice_color1.not_nice}"
+  .field
+    b = @questionnaire.question_about_color.not_nice_color2.color
+    = " - #{@questionnaire.question_about_color.not_nice_color2.not_nice}"
+  .field
+    b = @questionnaire.question_about_color.not_nice_color3.color
+    = " - #{@questionnaire.question_about_color.not_nice_color3.not_nice}"
 
 
 p

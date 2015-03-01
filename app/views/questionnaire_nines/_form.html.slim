@@ -39,7 +39,7 @@
     .ui.dividing.header Вопросы
     .field
       label Вопрос №1
-      = f.select :profession_type, ProfessionType.all.collect {|type| [type.name, type.id]}, {prompt: 'Тип профессий'}
+      = f.select :profession_type_id, ProfessionType.all_types.collect {|pattern| [pattern.name, pattern.id]}, {prompt: 'Тип профессий'}
 
     .ui.divider
 
