@@ -1,105 +1,105 @@
-p#notice = notice
+.ui.segment
+  p#notice = notice
 
-p
-  strong Ф.И.О. опрашиваемого:&nbsp;
-  = @questionnaire.first_name + ' ' + @questionnaire.last_name + ' ' + @questionnaire.patronymic
-p
-  strong Школа:&nbsp;
-  = @questionnaire.school + ', ' + @questionnaire.school_district
-p
-  strong Класс:&nbsp;
-  = @questionnaire.classroom
-p
-  strong Телефон:&nbsp;
-  = @questionnaire.phone
-p
-  strong E-mail:&nbsp;
-  = @questionnaire.email
-
-h2 Результаты тестирования:
-
-h4 Вопрос №1. Факторы выбора профессии
-table.ui.table
-  thead
-    tr
-      th Важность
-      th Фактор
-      th Мотивация
-      th Аргументы
-  tbody
-    - @questionnaire.question_about_factor.answers_by_factor_questions.desc(:importance).reverse.each do |factor|
-      tr
-        td = factor.importance
-        td = factor.factor_choise_profession.factor
-        td = factor.factor_choise_profession.motivation
-        td = factor.factor_choise_profession.arguments
-
-h4 Вопрос №2. Приятные и неприятные цвета
-h3 Приятные цвета
-.three.fields
-  .field
-    b = @questionnaire.question_about_color.nice_color1.color
-    = " - #{@questionnaire.question_about_color.nice_color1.nice}"
-  .field
-    b = @questionnaire.question_about_color.nice_color2.color
-    = " - #{@questionnaire.question_about_color.nice_color2.nice}"
-  .field
-    b = @questionnaire.question_about_color.nice_color3.color
-    = " - #{@questionnaire.question_about_color.nice_color3.nice}"
-h3 Неприятные цвета
-.three.fields
-  .field
-    b = @questionnaire.question_about_color.not_nice_color1.color
-    = " - #{@questionnaire.question_about_color.not_nice_color1.not_nice}"
-  .field
-    b = @questionnaire.question_about_color.not_nice_color2.color
-    = " - #{@questionnaire.question_about_color.not_nice_color2.not_nice}"
-  .field
-    b = @questionnaire.question_about_color.not_nice_color3.color
-    = " - #{@questionnaire.question_about_color.not_nice_color3.not_nice}"
-
-
-p
-  h4 Вопрос №3. Определение профессиональных предпочтений
-  = "Буквенный код: #{@questionnaire.question_about_preference.letter_code}"
+  .ui.red.ribbon.label
+    | Личные данные
   br
-  - @questionnaire.question_about_preference.max_sum.each do |preference|
-    = preference[0]
-    br
-    = @questionnaire.question_about_preference.get_description(preference[0])
-    br
+  br
+  p
+    strong Ф.И.О. опрашиваемого:&nbsp;
+    = @questionnaire.first_name + ' ' + @questionnaire.last_name + ' ' + @questionnaire.patronymic
+  p
+    strong Школа:&nbsp;
+    = @questionnaire.school + ', ' + @questionnaire.school_district
+  p
+    strong Класс:&nbsp;
+    = @questionnaire.classroom
+  p
+    strong Телефон:&nbsp;
+    = @questionnaire.phone
+  p
+    strong E-mail:&nbsp;
+    = @questionnaire.email
+
+  .ui.red.ribbon.label
+    | Результаты тестирования
+
+  .ui.secondary.segment
+    .ui.dividing.header Вопрос №1. Факторы выбора профессии
+    table.ui.table
+      thead
+        tr
+          th Важность
+          th Фактор
+          th Мотивация
+          th Аргументы
+      tbody
+        - @questionnaire.question_about_factor.answers_by_factor_questions.asc(:importance).each do |factor|
+          tr
+            td = factor.importance
+            td = factor.factor_choise_profession.factor
+            td = factor.factor_choise_profession.motivation
+            td = factor.factor_choise_profession.arguments
+
+    .ui.dividing.header Вопрос №2. Приятные и неприятные цвета
+    p
+      h4.ui.header Приятные цвета
+      p
+        u = @questionnaire.question_about_color.nice_color1.color
+        = " - #{@questionnaire.question_about_color.nice_color1.nice}"
+      p
+        u = @questionnaire.question_about_color.nice_color2.color
+        = " - #{@questionnaire.question_about_color.nice_color2.nice}"
+      p
+        u = @questionnaire.question_about_color.nice_color3.color
+        = " - #{@questionnaire.question_about_color.nice_color3.nice}"
+      h4.ui.header Неприятные цвета
+      p
+        u = @questionnaire.question_about_color.not_nice_color1.color
+        = " - #{@questionnaire.question_about_color.not_nice_color1.not_nice}"
+      p
+        u = @questionnaire.question_about_color.not_nice_color2.color
+        = " - #{@questionnaire.question_about_color.not_nice_color2.not_nice}"
+      p
+        u = @questionnaire.question_about_color.not_nice_color3.color
+        = " - #{@questionnaire.question_about_color.not_nice_color3.not_nice}"
 
 
-p
-  h4 Вопрос №4. Заверши рисунок.
-  h3 1. Отношение к себе и представление о себе:
-  .field
-    .label = @questionnaire.question_about_picture.image1.title
-    p = @questionnaire.question_about_picture.image1.description
-  h3 2. Общительность:
-  .field
-    .label = @questionnaire.question_about_picture.image2.title
-    p = @questionnaire.question_about_picture.image2.description
-  h3 3. Дисциплинированность:
-  .field
-    .label = @questionnaire.question_about_picture.image3.title
-    p = @questionnaire.question_about_picture.image3.description
-  h3 4. Уверенность:
-  .field
-    .label = @questionnaire.question_about_picture.image4.title
-    p = @questionnaire.question_about_picture.image4.description
-  h3 5. Соперничество (конкурентоспособность):
-  .field
-    .label = @questionnaire.question_about_picture.image5.title
-    p = @questionnaire.question_about_picture.image5.description
-  h3 6. Целеустремленность:
-  .field
-    .label = @questionnaire.question_about_picture.image6.title
-    p = @questionnaire.question_about_picture.image6.description
+    .ui.dividing.header №3. Определение профессиональных предпочтений
+    - @questionnaire.question_about_preference.max_sum.each_with_index do |preference,index|
+      p
+        u = "#{preference[0]} (Буквенный код: #{@questionnaire.question_about_preference.letter_code[index]})"
+        p = @questionnaire.question_about_preference.get_description(preference[0])
+
+    .ui.dividing.header Вопрос №4. Заверши рисунок.
+    h4.ui.header 1. Отношение к себе и представление о себе:
+    .field
+      .label = @questionnaire.question_about_picture.image1.title.capitalize
+      p = @questionnaire.question_about_picture.image1.description
+    h4.ui.header 2. Общительность:
+    .field
+      .label = @questionnaire.question_about_picture.image2.title
+      p = @questionnaire.question_about_picture.image2.description
+    h4.ui.header 3. Дисциплинированность:
+    .field
+      .label = @questionnaire.question_about_picture.image3.title
+      p = @questionnaire.question_about_picture.image3.description
+    h4.ui.header 4. Уверенность:
+    .field
+      .label = @questionnaire.question_about_picture.image4.title
+      p = @questionnaire.question_about_picture.image4.description
+    h4.ui.header 5. Соперничество (конкурентоспособность):
+    .field
+      .label = @questionnaire.question_about_picture.image5.title
+      p = @questionnaire.question_about_picture.image5.description
+    h4.ui.header 6. Целеустремленность:
+    .field
+      .label = @questionnaire.question_about_picture.image6.title
+      p = @questionnaire.question_about_picture.image6.description
 
 
 
 
-= link_to 'Edit', edit_questionnaire_elevent_path(@questionnaire)
-'|
-= link_to 'Back', questionnaire_elevents_path
+  = link_to 'Edit', edit_questionnaire_elevent_path(@questionnaire)
+  '|
+  = link_to 'Back', questionnaire_elevents_path

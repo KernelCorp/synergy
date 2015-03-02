@@ -56,20 +56,23 @@
 
     .field
       label Вопрос №3
+
     = f.fields_for :question3 do |question3|
-      = question3.fields_for :answers do |answer|
-        .four.fields
-          .field.inline
-            label = 'Утверждение №' + (answer.index + 1).to_s
-          .field.inline
-            = answer.radio_button :answer, '3', checked: true
-            label 3
-          .field.inline
-            = answer.radio_button :answer, '2'
-            label 2
-          .field.inline
-            = answer.radio_button :answer, '1'
-            label 1
+      .ui.center.aligned.five.column.grid
+        = question3.fields_for :answers do |answer|
+          .column
+            .ui.vertical.fluid.menu
+                .header.item
+                  label = 'Утверждение №' + (answer.index + 1).to_s
+                .item
+                  = answer.radio_button :answer, '3', checked: true
+                  label = " - 3 "
+                .item
+                  = answer.radio_button :answer, '2'
+                  label = " - 2 "
+                .item
+                  = answer.radio_button :answer, '1'
+                  label = " - 1 "
 
     .ui.divider
 
