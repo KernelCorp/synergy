@@ -50,22 +50,20 @@
   = f.fields_for :question_about_color do |question_form|
     h3 Приятные цвета
     .three.fields
-      = question_form.fields_for :nice_color do |nice_color_form|
-        .field
-          = nice_color_form.select :color1, Questionnaire::Elevent::ANSWERS_BY_COLOR_QUESTION, {prompt: 'Приятный цвет'}
-        .field
-          = nice_color_form.select :color2, Questionnaire::Elevent::ANSWERS_BY_COLOR_QUESTION, {prompt: 'Приятный цвет'}
-        .field
-          = nice_color_form.select :color3, Questionnaire::Elevent::ANSWERS_BY_COLOR_QUESTION, {prompt: 'Приятный цвет'}
+      .field
+        = question_form.select :nice_color1_id, ColorPattern.all_colors.collect { |pattern| [pattern.color, pattern.id]}, {prompt: 'Приятный цвет'}
+      .field
+        = question_form.select :nice_color2_id, ColorPattern.all_colors.collect { |pattern| [pattern.color, pattern.id]}, {prompt: 'Приятный цвет'}
+      .field
+        = question_form.select :nice_color3_id, ColorPattern.all_colors.collect { |pattern| [pattern.color, pattern.id]}, {prompt: 'Приятный цвет'}
     h3 Неприятные цвета
     .three.fields
-      = question_form.fields_for :not_nice_color do |not_nice_color_form|
-        .field
-          = not_nice_color_form.select :color1, Questionnaire::Elevent::ANSWERS_BY_COLOR_QUESTION, {prompt: 'Неприятный цвет'}
-        .field
-          = not_nice_color_form.select :color2, Questionnaire::Elevent::ANSWERS_BY_COLOR_QUESTION, {prompt: 'Неприятный цвет'}
-        .field
-          = not_nice_color_form.select :color3, Questionnaire::Elevent::ANSWERS_BY_COLOR_QUESTION, {prompt: 'Неприятный цвет'}
+      .field
+        = question_form.select :not_nice_color1_id, ColorPattern.all_colors.collect { |pattern| [pattern.color, pattern.id]}, {prompt: 'Неприятный цвет'}
+      .field
+        = question_form.select :not_nice_color2_id, ColorPattern.all_colors.collect { |pattern| [pattern.color, pattern.id]}, {prompt: 'Неприятный цвет'}
+      .field
+        = question_form.select :not_nice_color3_id, ColorPattern.all_colors.collect { |pattern| [pattern.color, pattern.id]}, {prompt: 'Неприятный цвет'}
 
   = f.fields_for :question_about_preference do |question_form|
     = question_form.fields_for :answers_by_preference_questions do |answer_form|
