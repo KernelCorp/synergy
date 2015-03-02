@@ -24,21 +24,32 @@ class QuestionAboutPreference
 
   def max_sum
     max_sum = all_sums
-    while min_s(max_sum) != max_s(max_sum) do
-      max_sum.except!(max_sum.index(min_s(max_sum)))
+    while min_s(max_sum)[1] != max_s(max_sum)[1] do
+      max_sum.except!(min_s(max_sum)[0])
     end
     max_sum
   end
 
   def letter_code
-    temp = all_sums
-    code = ''
-    3.times { temp.except!(temp.index(min_s(temp))) }
-    until temp.empty?
-      code += temp.index(max_s(temp))[0]
-      temp.except!(temp.index(max_s(temp)))
+    sums = all_sums
+    last_max = 0
+    codes = ['','']
+    4.times do
+      if max_s(sums)[1] != last_max
+        codes[0] += max_s(sums)[0][0]
+        codes[1] += max_s(sums)[0][0]
+      else
+        codes[1].remove!(codes[1].last)
+        codes[1] += max_s(sums)[0][0]
+      end
+      last_max = max_s(sums)[1]
+      sums.except!(max_s(sums)[0])
     end
-    code
+    if codes[0] == codes[1]
+      codes.remove!(codes[1])
+      codes[0].remove!(codes[0].last)
+    end
+    codes
   end
 
   def  get_description (title)
@@ -46,13 +57,15 @@ class QuestionAboutPreference
   end
 
   private
-  def min_s (t)
-    t.min_by{|k,v| v}[1]
+
+  def max_s (sum)
+    sum.max_by{|k,v| v}
   end
 
-  def max_s (t)
-    t.max_by{|k,v| v}[1]
+  def min_s (sum)
+    sum.min_by{|k,v| v}
   end
+
 
 
 end

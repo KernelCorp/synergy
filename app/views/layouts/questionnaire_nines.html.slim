@@ -1,22 +1,22 @@
 doctype html
 html
-head
-  title Synergy
-  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-  = javascript_include_tag 'application', 'data-turbolinks-track' => true
-  = csrf_meta_tags
-body
-  .wrapper
-    = image_tag 'synergy.png'
-    .ui.tiered.menu
-      .menu
-        =link_to questionnaire_nines_path, class: 'active item'
-          i.users.icon
-          | Анкеты 9-ых классов
-        =link_to questionnaire_elevents_path, class: 'item'
-          i.users.icon
-          | Анкеты 11-ых классов
-      .ui.sub.menu
-        =link_to "Просмотреть все", questionnaire_nines_path, class: 'active item'
-        =link_to "Добавить новую", new_questionnaire_nine_path, class: 'item'
-    = yield
+  head
+    title Synergy
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body
+    .wrapper
+      = image_tag 'synergy.png'
+      .ui.tiered.menu
+        .menu
+          =link_to questionnaire_nines_path, class: 'active item'
+            i.users.icon
+            | Анкеты 9-ых классов
+          =link_to questionnaire_elevents_path, class: 'item'
+            i.users.icon
+            | Анкеты 11-ых классов
+        .ui.sub.menu
+          =link_to "Просмотреть все", questionnaire_nines_path, class: 'active item'
+          =link_to "Добавить новую", new_questionnaire_nine_path, class: 'item'
+      = yield

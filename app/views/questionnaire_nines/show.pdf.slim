@@ -42,41 +42,41 @@
       .field
         b Ведущий подтип -&nbsp;
         - if @questionnaire.question4.leading_subtype.present?
-          = @questionnaire.question4.leading_subtype.title
+          = @questionnaire.question4.leading_subtype.thinking_subtype.name
           p
-            = @questionnaire.question4.leading_subtype.status
+            = @questionnaire.question4.leading_subtype.thinking_subtype.status
           p
-            = @questionnaire.question4.leading_subtype.description
+            = @questionnaire.question4.leading_subtype.thinking_subtype.description
           p
             b Наиболее подходящие деятельности:&nbsp;
-            = @questionnaire.question4.leading_subtype.suitable_job
+            = @questionnaire.question4.leading_subtype.thinking_subtype.suitable_job
         - else
           | Не определен
 
         .field
           b Актуальный подти -&nbsp;
           - if @questionnaire.question4.actual_subtype.present?
-            = @questionnaire.question4.actual_subtype.title
+            = @questionnaire.question4.actual_subtype.thinking_subtype.name
             p
-              = @questionnaire.question4.actual_subtype.status
+              = @questionnaire.question4.actual_subtype.thinking_subtype.status
             p
-              = @questionnaire.question4.actual_subtype.description
+              = @questionnaire.question4.actual_subtype.thinking_subtype.description
             p
               b Наиболее подходящие деятельности:&nbsp;
-              = @questionnaire.question4.actual_subtype.suitable_job
+              = @questionnaire.question4.actual_subtype.thinking_subtype.suitable_job
           - else
             | Не определен
 
         .field
           b Потенциальный подтип -&nbsp;
           - if @questionnaire.question4.potential_subtype.present?
-            = @questionnaire.question4.potential_subtype.title
+            = @questionnaire.question4.potential_subtype.thinking_subtype.name
             p
-              = @questionnaire.question4.potential_subtype.status
+              = @questionnaire.question4.potential_subtype.thinking_subtype.status
             p
-              = @questionnaire.question4.potential_subtype.description
+              = @questionnaire.question4.potential_subtype.thinking_subtype.description
             p
               b Наиболее подходящие деятельности:&nbsp;
-              = @questionnaire.question4.potential_subtype.suitable_job
+              = @questionnaire.question4.potential_subtype.thinking_subtype.suitable_job
           - else
             | Не определен
