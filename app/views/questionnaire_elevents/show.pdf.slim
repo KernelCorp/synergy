@@ -29,7 +29,7 @@ meta http-equiv="content-type" content="text/html; charset=utf-8"
 
   .ui.secondary.segment
     .ui.dividing.header Вопрос №1. Факторы выбора профессии
-    table.ui.table
+    table
       thead
         tr
           th Важность
@@ -99,11 +99,3 @@ meta http-equiv="content-type" content="text/html; charset=utf-8"
     .field
       .label = @questionnaire.question_about_picture.image6.title
       p = @questionnaire.question_about_picture.image6.description
-
-
-
-  = link_to 'PDF', edit_questionnaire_elevent_path(@questionnaire, format: :pdf)
-  '|
-  = link_to 'Edit', edit_questionnaire_elevent_path(@questionnaire)
-  '|
-  = link_to 'Back', questionnaire_elevents_path
