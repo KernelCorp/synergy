@@ -1,6 +1,8 @@
-= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-.ui.segment
-  .ui.red.ribbon.label
+meta http-equiv="content-type" content="text/html; charset=utf-8"
+= wicked_pdf_image_tag 'synergy.png'
+= wicked_pdf_stylesheet_link_tag 'application', media: 'all'
+.ui.basic.segment
+  .ui.dividing.header
     | Личные данные
   p
     strong Ф.И.О. опрашиваемого:&nbsp;
@@ -18,7 +20,7 @@
     strong E-mail:&nbsp;
     = @questionnaire.email
 
-  .ui.red.ribbon.label
+  .ui.dividing.header
     | Результаты тестирования:
   .ui.secondary.segment
 

@@ -1,6 +1,6 @@
 class QuestionnaireEleventsController < ApplicationController
   before_action :set_questionnaire, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
 
   def index
     @questionnaires = Questionnaire::Elevent.all
