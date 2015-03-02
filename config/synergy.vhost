@@ -6,7 +6,7 @@ server {
     listen 80;
 
     client_max_body_size 1G;
-    server_name synergy.kerweb.com www.synergy.kerweb.com;
+    server_name synergy.kerweb.ru www.synergy.kerweb.ru;
     keepalive_timeout 5;
     root /var/www/synergy/current/public;
         try_files $uri/index.html $uri.html $uri @myapp;
