@@ -12,4 +12,6 @@ class QuestionAboutPicture
   belongs_to :image5, class_name: 'PicturePattern'
   belongs_to :image6, class_name: 'PicturePattern'
 
+  validates_presence_of :image1, :image2, :image3, :image4, :image5, :image6
+
 end

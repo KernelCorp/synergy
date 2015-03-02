@@ -11,5 +11,7 @@ module Questionnaire
     field :email
     field :classroom
     field :school_district
+
+    validates_presence_of :first_name, :last_name, :patronymic, :school, :phone, :email, :classroom, :school_district
   end
 end
