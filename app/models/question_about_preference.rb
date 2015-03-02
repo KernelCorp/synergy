@@ -46,7 +46,7 @@ class QuestionAboutPreference
       sums.except!(max_s(sums)[0])
     end
     if codes[0] == codes[1]
-      codes.remove!(codes[1])
+      codes.delete_at(1)
       codes[0].remove!(codes[0].last)
     end
     codes

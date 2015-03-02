@@ -9,6 +9,7 @@ module Questionnaire
     embeds_one :question4
 
     accepts_nested_attributes_for :question4, :question3
+    validates_presence_of :question2, :profession_type
 
     after_initialize do
       build_question3 unless question3
