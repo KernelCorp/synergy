@@ -1,9 +1,9 @@
 head
   meta http-equiv="content-type" content="text/html; charset=utf-8"
   = wicked_pdf_stylesheet_link_tag 'application'
-body style="background-color: transparent"
+body style="background-color: transparent; width: 100%"
   = wicked_pdf_image_tag 'synergy.png'
-  .ui.basic.segment
+  .ui.basic.segment style="width: 100%"
     p#notice = notice
 
     .ui.dividing.header
@@ -34,18 +34,15 @@ body style="background-color: transparent"
       table
         thead
           tr
-            th Важность
             th Фактор
             th Мотивация
-            th Аргументы
         tbody
           - @questionnaire.question_about_factor.answers_by_factor_questions.asc(:importance).each do |factor|
             tr
-              td = factor.importance
               td = factor.factor_choise_profession.factor
               td = factor.factor_choise_profession.motivation
-              td = factor.factor_choise_profession.arguments
 
+      br
       .ui.dividing.header Вопрос №2. Приятные и неприятные цвета
       p
         h4.ui.header Приятные цвета

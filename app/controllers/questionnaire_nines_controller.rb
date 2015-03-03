@@ -9,7 +9,12 @@ class QuestionnaireNinesController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.pdf {render pdf: "questionnaire-#{ @questionnaire.id }"}
+      format.pdf {
+        render pdf: "questionnaire-#{ @questionnaire.id }", :margin => {:top                => 10,
+                                                                        :bottom             => 0,
+                                                                        :left               => 10,
+                                                                        :right              => 2}, show_as_html: params[:debug].present?
+      }
     end
   end
 
