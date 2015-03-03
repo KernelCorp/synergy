@@ -31,16 +31,19 @@ body style="background-color: transparent; width: 100%"
 
     .ui.basic.segment
       .ui.dividing.header Вопрос №1. Факторы выбора профессии
+      br
       table
         thead
           tr
-            th Фактор
-            th Мотивация
+            th style='width: 300px;' Фактор
+            th style='width: 60px;'
+            th style='width: 300px;' Мотивация
         tbody
           - @questionnaire.question_about_factor.answers_by_factor_questions.asc(:importance).each do |factor|
             tr
-              td = factor.factor_choise_profession.factor
-              td = factor.factor_choise_profession.motivation
+              td style='width: 300px; height: 25px' = factor.factor_choise_profession.factor
+              td style='width: 60px;'
+              td style='width: 300px;' = factor.factor_choise_profession.motivation
 
       br
       .ui.dividing.header Вопрос №2. Приятные и неприятные цвета
@@ -55,7 +58,7 @@ body style="background-color: transparent; width: 100%"
         p
           u = @questionnaire.question_about_color.nice_color3.color
           = " - #{@questionnaire.question_about_color.nice_color3.nice}"
-        h4.ui.header Неприятные цвета
+        h4.ui.header Неприятные (отвергаемые) цвета
         p
           u = @questionnaire.question_about_color.not_nice_color1.color
           = " - #{@questionnaire.question_about_color.not_nice_color1.not_nice}"
@@ -68,6 +71,7 @@ body style="background-color: transparent; width: 100%"
 
 
       .ui.dividing.header №3. Определение профессиональных предпочтений
+      br
       - @questionnaire.question_about_preference.max_sum.each_with_index do |preference,index|
         p
           u = "#{preference[0]} (Буквенный код: #{@questionnaire.question_about_preference.letter_code[index]})"
@@ -76,25 +80,25 @@ body style="background-color: transparent; width: 100%"
       .ui.dividing.header Вопрос №4. Заверши рисунок.
       h4.ui.header 1. Отношение к себе и представление о себе:
       .field
-        .label = @questionnaire.question_about_picture.image1.title.capitalize
+        /.label = @questionnaire.question_about_picture.image1.title.capitalize
         p = @questionnaire.question_about_picture.image1.description
       h4.ui.header 2. Общительность:
       .field
-        .label = @questionnaire.question_about_picture.image2.title
+        /.label = @questionnaire.question_about_picture.image2.title
         p = @questionnaire.question_about_picture.image2.description
       h4.ui.header 3. Дисциплинированность:
       .field
-        .label = @questionnaire.question_about_picture.image3.title
+        /.label = @questionnaire.question_about_picture.image3.title
         p = @questionnaire.question_about_picture.image3.description
       h4.ui.header 4. Уверенность:
       .field
-        .label = @questionnaire.question_about_picture.image4.title
+        /.label = @questionnaire.question_about_picture.image4.title
         p = @questionnaire.question_about_picture.image4.description
       h4.ui.header 5. Соперничество (конкурентоспособность):
       .field
-        .label = @questionnaire.question_about_picture.image5.title
+        /.label = @questionnaire.question_about_picture.image5.title
         p = @questionnaire.question_about_picture.image5.description
       h4.ui.header 6. Целеустремленность:
       .field
-        .label = @questionnaire.question_about_picture.image6.title
+        /.label = @questionnaire.question_about_picture.image6.title
         p = @questionnaire.question_about_picture.image6.description
