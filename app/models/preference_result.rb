@@ -2,7 +2,7 @@ class PreferenceResult
   include Mongoid::Document
 
   field :title
-  field :description
+  field :description, type: String
 
   has_many :preference_result_criteriums
   accepts_nested_attributes_for :preference_result_criteriums
