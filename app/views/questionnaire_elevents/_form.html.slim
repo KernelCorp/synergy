@@ -2,7 +2,7 @@
   = form_for @questionnaire, :html => {class: 'ui form'} do |f|
     - if @questionnaire.errors.any?
       #error_explanation
-        h2 = "#{pluralize(@questionnaire.errors.count, 'error')} prohibited this questionnaire from being saved:"
+        h2 = "#{t('error', count: @questionnaire.errors.count)} необходимо исправить перед сохранением анкеты"
         ul
           - @questionnaire.errors.full_messages.each do |message|
             li = message
@@ -34,7 +34,7 @@
 
     .ui.dividing.header Вопросы
     .field
-      label Впорос №1. Факторы выбора профессии
+      label Вопрос №1. Факторы выбора профессии
       = f.fields_for :question_about_factor do |question_form|
         table.ui.table
           thead
@@ -51,7 +51,7 @@
     .ui.divider
 
     .field
-      label Впорос №2. Приятные и неприятные цвета
+      label Вопрос №2. Приятные и неприятные цвета
       = f.fields_for :question_about_color do |question_form|
         i Приятные цвета:
         .three.fields
@@ -73,7 +73,7 @@
     .ui.divider
 
     .field
-      label Впорос №3. Определение профессиональных предпочтений
+      label Вопрос №3. Определение профессиональных предпочтений
       = f.fields_for :question_about_preference do |question_form|
         .ui.center.aligned.three.column.grid
           = question_form.fields_for :answers_by_preference_questions do |answer_form|
@@ -92,7 +92,7 @@
     .ui.divider
 
     .field
-      label Впорос №3. Определение профессиональных предпочтений
+      label Вопрос №4. Заверши рисунок.
       = f.fields_for :question_about_picture do |question_form|
         .three.fields
           .field

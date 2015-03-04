@@ -1,0 +1,29 @@
+ru:
+  error:
+    one: "%{count} ошибку"
+    few: "%{count} ошибки"
+    many: "%{count} ошибок"
+    other: "%{count} ошибки"
+  mongoid:
+    errors:
+      blank: "не может быть пустым"
+    attributes:
+      questionnaire/base:
+        first_name: 'Имя'
+        last_name: 'Фамилия'
+        patronymic: 'Отчество'
+        school: 'Школа'
+        phone: 'Телефон'
+        email: 'E-mail'
+        classroom: 'Класс'
+        school_district: 'Округ школы'
+        profession_type: 'Тип профессии'
+      questionnaire/nine:
+        question4: "Заполнены не все формулы рисунков или формула"
+      questionnaire/elevent:
+        question_about_factor: Не все утверждения оценены или важность
+        question_about_color: Не все цвета выбраны или цвет
+        question_about_picture: Не все рисунки выбраны или рисунок
+
+
+

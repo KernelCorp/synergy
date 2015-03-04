@@ -98,7 +98,8 @@
       p = @questionnaire.question_about_picture.image6.description
 
 
-
+  = link_to 'PDF', questionnaire_elevent_path(@questionnaire, format: :pdf)
+  '|
 
   = link_to 'Edit', edit_questionnaire_elevent_path(@questionnaire)
   '|

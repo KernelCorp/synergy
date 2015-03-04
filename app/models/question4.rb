@@ -5,6 +5,7 @@ class Question4
   field :answer2, type: Integer
   field :answer3, type: Integer
 
+  validates_presence_of :answer1, :answer2, :answer3
   embedded_in :questionnaire, class_name: 'Questionnaire::Nine'
 
   def leading_subtype

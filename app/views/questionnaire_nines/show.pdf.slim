@@ -1,84 +1,86 @@
-meta http-equiv="content-type" content="text/html; charset=utf-8"
-= wicked_pdf_image_tag 'synergy.png'
-= wicked_pdf_stylesheet_link_tag 'application'
-.ui.basic.segment
-  .ui.dividing.header
-    | Личные данные
-  p
-    strong Ф.И.О. опрашиваемого:&nbsp;
-    = @questionnaire.first_name + ' ' + @questionnaire.last_name + ' ' + @questionnaire.patronymic
-  p
-    strong Школа:&nbsp;
-    = @questionnaire.school + ', ' + @questionnaire.school_district
-  p
-    strong Класс:&nbsp;
-    = @questionnaire.classroom
-  p
-    strong Телефон:&nbsp;
-    = @questionnaire.phone
-  p
-    strong E-mail:&nbsp;
-    = @questionnaire.email
-
-  .ui.dividing.header
-    | Результаты тестирования:
-  .ui.secondary.segment
-
-    .ui.dividing.header Вопрос №1. Типы профессий (сферы):
+head
+  meta http-equiv="content-type" content="text/html; charset=utf-8"
+  = wicked_pdf_stylesheet_link_tag 'application'
+body style="background-color: transparent"
+  = wicked_pdf_image_tag 'synergy.png'
+  .ui.basic.segment
+    .ui.dividing.header
+      | Личные данные
     p
-      = "#{@questionnaire.profession_type.name} - #{@questionnaire.profession_type.description}"
-
-    .ui.dividing.header Вопрос №2. Осознанность выбора профессии
+      strong Ф.И.О. опрашиваемого:&nbsp;
+      = @questionnaire.first_name + ' ' + @questionnaire.last_name + ' ' + @questionnaire.patronymic
     p
-      = 'Выбор профессии совершается ' + @questionnaire.question2
-
-    .ui.dividing.header Вопрос №3. Тип мышления
+      strong Школа:&nbsp;
+      = @questionnaire.school + ', ' + @questionnaire.school_district
     p
-      - @questionnaire.question3.type_of_thinking.each do |current_type|
-        p
-          b = current_type.name
-          = ' ' + current_type.description
-
-    .ui.dividing.header Вопрос №4. Подтипы
+      strong Класс:&nbsp;
+      = @questionnaire.classroom
     p
-      .field
-        b Ведущий подтип -&nbsp;
-        - if @questionnaire.question4.leading_subtype.present?
-          = @questionnaire.question4.leading_subtype.thinking_subtype.name
+      strong Телефон:&nbsp;
+      = @questionnaire.phone
+    p
+      strong E-mail:&nbsp;
+      = @questionnaire.email
+
+    .ui.dividing.header
+      | Результаты тестирования:
+    .ui.basic.segment
+
+      .ui.dividing.header Вопрос №1. Типы профессий (сферы):
+      p
+        = "#{@questionnaire.profession_type.name} - #{@questionnaire.profession_type.description}"
+
+      .ui.dividing.header Вопрос №2. Осознанность выбора профессии
+      p
+        = 'Выбор профессии совершается ' + @questionnaire.question2
+
+      .ui.dividing.header Вопрос №3. Тип мышления
+      p
+        - @questionnaire.question3.type_of_thinking.each do |current_type|
           p
-            = @questionnaire.question4.leading_subtype.thinking_subtype.status
-          p
-            = @questionnaire.question4.leading_subtype.thinking_subtype.description
-          p
-            b Наиболее подходящие деятельности:&nbsp;
-            = @questionnaire.question4.leading_subtype.thinking_subtype.suitable_job
-        - else
-          | Не определен
+            b = current_type.name
+            = ' ' + current_type.description
 
+      .ui.dividing.header Вопрос №4. Подтипы
+      p
         .field
-          b Актуальный подти -&nbsp;
-          - if @questionnaire.question4.actual_subtype.present?
-            = @questionnaire.question4.actual_subtype.thinking_subtype.name
+          b Ведущий подтип -&nbsp;
+          - if @questionnaire.question4.leading_subtype.present?
+            = @questionnaire.question4.leading_subtype.thinking_subtype.name
             p
-              = @questionnaire.question4.actual_subtype.thinking_subtype.status
+              = @questionnaire.question4.leading_subtype.thinking_subtype.status
             p
-              = @questionnaire.question4.actual_subtype.thinking_subtype.description
+              = @questionnaire.question4.leading_subtype.thinking_subtype.description
             p
               b Наиболее подходящие деятельности:&nbsp;
-              = @questionnaire.question4.actual_subtype.thinking_subtype.suitable_job
+              = @questionnaire.question4.leading_subtype.thinking_subtype.suitable_job
           - else
             | Не определен
 
-        .field
-          b Потенциальный подтип -&nbsp;
-          - if @questionnaire.question4.potential_subtype.present?
-            = @questionnaire.question4.potential_subtype.thinking_subtype.name
-            p
-              = @questionnaire.question4.potential_subtype.thinking_subtype.status
-            p
-              = @questionnaire.question4.potential_subtype.thinking_subtype.description
-            p
-              b Наиболее подходящие деятельности:&nbsp;
-              = @questionnaire.question4.potential_subtype.thinking_subtype.suitable_job
-          - else
-            | Не определен
+          .field
+            b Актуальный подти -&nbsp;
+            - if @questionnaire.question4.actual_subtype.present?
+              = @questionnaire.question4.actual_subtype.thinking_subtype.name
+              p
+                = @questionnaire.question4.actual_subtype.thinking_subtype.status
+              p
+                = @questionnaire.question4.actual_subtype.thinking_subtype.description
+              p
+                b Наиболее подходящие деятельности:&nbsp;
+                = @questionnaire.question4.actual_subtype.thinking_subtype.suitable_job
+            - else
+              | Не определен
+
+          .field
+            b Потенциальный подтип -&nbsp;
+            - if @questionnaire.question4.potential_subtype.present?
+              = @questionnaire.question4.potential_subtype.thinking_subtype.name
+              p
+                = @questionnaire.question4.potential_subtype.thinking_subtype.status
+              p
+                = @questionnaire.question4.potential_subtype.thinking_subtype.description
+              p
+                b Наиболее подходящие деятельности:&nbsp;
+                = @questionnaire.question4.potential_subtype.thinking_subtype.suitable_job
+            - else
+              | Не определен

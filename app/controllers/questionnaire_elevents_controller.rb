@@ -7,6 +7,15 @@ class QuestionnaireEleventsController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.pdf {
+        render pdf: "questionnaire-#{ @questionnaire.id }", :margin => {:top                => 10,
+                                                                        :bottom             => 10,
+                                                                        :left               => 10,
+                                                                        :right              => 10}, show_as_html: params[:debug].present?
+      }
+    end
   end
 
   def new

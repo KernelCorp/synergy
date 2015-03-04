@@ -8,7 +8,7 @@ gem 'enumerize'
 
 # Mongoid and utils
 gem 'mongoid', '~> 4.0.0'
-
+gem 'russian'
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
 # Admin tool
