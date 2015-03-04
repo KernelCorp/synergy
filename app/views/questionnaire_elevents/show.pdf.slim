@@ -75,7 +75,7 @@ body style="background-color: transparent; width: 100%"
       - @questionnaire.question_about_preference.max_sum.each_with_index do |preference,index|
         p
           u = "#{preference[0]} (Буквенный код: #{@questionnaire.question_about_preference.letter_code[index]})"
-          p = @questionnaire.question_about_preference.get_description(preference[0])
+          = raw @questionnaire.question_about_preference.get_description(preference[0])
 
       .ui.dividing.header Вопрос №4. Заверши рисунок.
       h4.ui.header 1. Отношение к себе и представление о себе:
