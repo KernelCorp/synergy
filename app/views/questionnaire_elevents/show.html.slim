@@ -69,7 +69,7 @@
     - @questionnaire.question_about_preference.max_sum.each_with_index do |preference,index|
       p
         u = "#{preference[0]} (Буквенный код: #{@questionnaire.question_about_preference.letter_code[index]})"
-        p = @questionnaire.question_about_preference.get_description(preference[0])
+        = raw @questionnaire.question_about_preference.get_description(preference[0])
 
     .ui.dividing.header Вопрос №4. Заверши рисунок.
     h4.ui.header 1. Отношение к себе и представление о себе:
@@ -98,8 +98,7 @@
       p = @questionnaire.question_about_picture.image6.description
 
 
-  = link_to 'PDF', questionnaire_elevent_path(@questionnaire, format: :pdf)
-  '|
+
 
   = link_to 'Edit', edit_questionnaire_elevent_path(@questionnaire)
   '|
